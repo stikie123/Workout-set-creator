@@ -16,8 +16,15 @@
 	<Workout category="calisthenics" tags="beginner" focus="arms, shoulders" >
 		<name>Normal push-up</name>
 		<explanation></explanation>
-		<sets>3x10</sets>
+		<sets>3x8-12</sets>
 		<rest value="30">30</rest>
+		<time></time>
+	</Workout>
+	<Workout category="weight" tags="beginner" focus="shoulders" >
+		<name>3kg front arms raise hold</name>
+		<explanation></explanation>
+		<sets>3xMax</sets>
+		<rest value="60">60</rest>
 		<time></time>
 	</Workout>
 </workouts>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<workouts>
+<Workout category="cardio" tags="beginner" focus="shoulders" >
+		<name>3km Jog</name>
+		<explanation></explanation>
+		<sets>1x1</sets>
+		<rest value="180">180</rest>
+		<time></time>
+	</Workout>
+	 </workouts>

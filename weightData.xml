@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<workouts>
+<Workout category="weight" tags="beginner" focus="shoulders" >
+		<name>3kg front arms raise hold</name>
+		<explanation></explanation>
+		<sets>3xMax</sets>
+		<rest value="60">60</rest>
+		<time></time>
+	</Workout>
+    </workouts>
