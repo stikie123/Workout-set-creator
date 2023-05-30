@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<workouts>
+	<Workout category="calisthenics" tags="beginner" focus="shoulders" >
+		<name>Wall Stand</name>
+		<explanation></explanation>
+		<sets>3xMax</sets>
+		<rest value="60">60</rest>
+		<exampleLink></exampleLink>
+	</Workout>
+	<Workout category="calisthenics" tags="beginner" focus="back, abs" >
+		<name>Plank</name>
+		<explanation></explanation>
+		<sets>3xMax</sets>
+		<rest value="60">60</rest>
+	</Workout>
+	<Workout category="calisthenics" tags="beginner" focus="arms, shoulders" >
+		<name>Normal push-up</name>
+		<explanation></explanation>
+		<sets>3x10</sets>
+		<rest value="30">30</rest>
+		<time></time>
+	</Workout>
+</workouts>
