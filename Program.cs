@@ -114,7 +114,9 @@ do
             readResult = Console.ReadLine();
 
             break;
+
         case "3":
+
             XmlDocument carDoc = new XmlDocument();
             carDoc.Load(@"carData.xml");
             XmlNodeList carNodes = carDoc.DocumentElement.SelectNodes("/workouts/Workout");
@@ -145,6 +147,125 @@ do
             Console.WriteLine("\n\rPress the Enter key to continue");
             readResult = Console.ReadLine();
 
+            break;
+
+        case "4":
+
+            string attributeName = "category";
+            Console.WriteLine("Enter the category you want to search for:");
+            Console.WriteLine(" 1. Calisthenics");
+            Console.WriteLine(" 2. Weight");
+            Console.WriteLine(" 3. Cardio");
+            string attributeValue = Console.ReadLine();
+            switch (attributeValue)
+            {
+                case "1":
+                    attributeValue = "calisthenics";
+                    break;
+
+                case "2":
+                    attributeValue = "weight";
+                    break;
+                case "3":
+                    attributeValue = "cardio";
+                    break;
+                default:
+                    break;
+            }
+
+            string focusAttributeName = "focus";
+            List<string> focusAttributeValues = new List<string>();
+            bool selectingFocusAreas = true;
+            while (selectingFocusAreas)
+            {
+                Console.WriteLine("Enter the focus you want to work on:(choose one at a time)");
+                Console.WriteLine(" 1. Arms");
+                Console.WriteLine(" 2. Legs");
+                Console.WriteLine(" 3. Shoulders");
+                Console.WriteLine(" 4. Back");
+                Console.WriteLine(" 5. Abs");
+                Console.WriteLine(" 6. Pecs");
+                Console.WriteLine(" 7. Done selecting focus areas");
+                string focusAttributeValue = Console.ReadLine();
+                switch (focusAttributeValue)
+                {
+                    case "1":
+                        focusAttributeValues.Add("arms");
+                        break;
+
+                    case "2":
+                        focusAttributeValues.Add("legs");
+                        break;
+
+                    case "3":
+                        focusAttributeValues.Add("shoulders");
+                        break;
+
+                    case "4":
+                        focusAttributeValues.Add("back");
+                        break;
+
+                    case "5":
+                        focusAttributeValues.Add("abs");
+                        break;
+
+                    case "6":
+                        focusAttributeValues.Add("pecs");
+                        break;
+
+                    case "7":
+                        selectingFocusAreas = false;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            string tagsAttributeName = "tags";
+            Console.WriteLine("Enter your skill level:");
+            Console.WriteLine(" 1. Beginner");
+            Console.WriteLine(" 2. Intermediate");
+            Console.WriteLine(" 3. Pro");
+            string tagsAttributeValue = Console.ReadLine();
+            switch (tagsAttributeValue)
+            {
+                case "1":
+                    tagsAttributeValue = "beginner";
+                    break;
+
+                case "2":
+                    tagsAttributeValue = "intermediate";
+                    break;
+                case "3":
+                    tagsAttributeValue = "pro";
+                    break;
+                default:
+                    break;
+            }
+
+            List<string> xmlFiles = new List<string> { @"calData.xml", @"weightData.xml", @"carData.xml" };
+            foreach (string xmlFile in xmlFiles)
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(xmlFile);
+                XmlNodeList nodes = doc.DocumentElement.SelectNodes("/workouts/Workout");
+
+                foreach (XmlNode node in nodes)
+                {
+                    if (node.Attributes[attributeName].Value == attributeValue && focusAttributeValues.Any(focus => node.Attributes[focusAttributeName].Value.Contains(focus)) && node.Attributes[tagsAttributeName].Value == tagsAttributeValue)
+                    {
+                        nodeList.Add(node);
+                    }
+                }
+            }
+
+            foreach (XmlNode node in nodeList)
+            {
+                Console.WriteLine("Name: " + node["name"].InnerText + " Sets: " + node["sets"].InnerText + " Rest: " + node["rest"].InnerText);
+            }
+            nodeList = new List<XmlNode>();
+            Console.WriteLine("\n\rPress the Enter key to continue");
+            readResult = Console.ReadLine();
             break;
 
         default:

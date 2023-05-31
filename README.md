@@ -1,4 +1,4 @@
-# Wourkout-set-creator
+# Workout-set-creator
 
-Is a console project that uses xml to genarate a workout for you.
+Is a console project that uses xml to generate a workout for you.
 Might become full app will see.
