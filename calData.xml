@@ -1,30 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <workouts>
-	<Workout category="calisthenics" tags="beginner" focus="shoulders" >
-		<name>Wall Stand</name>
-		<explanation></explanation>
-		<sets>3xMax</sets>
-		<rest value="60">60</rest>
-		<exampleLink></exampleLink>
-	</Workout>
-	<Workout category="calisthenics" tags="beginner" focus="back, abs" >
-		<name>Plank</name>
-		<explanation></explanation>
-		<sets>3xMax</sets>
-		<rest value="60">60</rest>
-	</Workout>
-	<Workout category="calisthenics" tags="beginner" focus="arms, shoulders" >
-		<name>Normal push-up</name>
-		<explanation></explanation>
-		<sets>3x8-12</sets>
-		<rest value="30">30</rest>
-		<time></time>
-	</Workout>
-	<Workout category="weight" tags="beginner" focus="shoulders" >
-		<name>3kg front arms raise hold</name>
-		<explanation></explanation>
-		<sets>3xMax</sets>
-		<rest value="60">60</rest>
-		<time></time>
-	</Workout>
+  <Workout category="calisthenics" tags="beginner" focus="shoulders">
+    <name>Wall Stand</name>
+    <explanation></explanation>
+    <sets>3xMax</sets>
+    <rest value="60">60</rest>
+    <exampleLink></exampleLink>
+  </Workout>
+  <Workout category="calisthenics" tags="beginner" focus="back, abs">
+    <name>Plank</name>
+    <explanation></explanation>
+    <sets>3xMax</sets>
+    <rest value="60">60</rest>
+    <exampleLink></exampleLink>
+  </Workout>
+  <Workout category="calisthenics" tags="beginner" focus="arms, shoulders">
+    <name>Normal push-up</name>
+    <explanation></explanation>
+    <sets>3x8-12</sets>
+    <rest value="30">30</rest>
+    <time></time>
+    <exampleLink></exampleLink>
+  </Workout>
+  <Workout category="calisthenics" tags="beginner" focus="shoulders">
+    <name>Pike hold</name>
+    <explanation></explanation>
+    <sets>3xMax</sets>
+    <rest value="30">30</rest>
+    <time></time>
+    <exampleLink></exampleLink>
+  </Workout>
 </workouts>

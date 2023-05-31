@@ -6,5 +6,6 @@
 		<sets>3xMax</sets>
 		<rest value="60">60</rest>
 		<time></time>
+		<exampleLink></exampleLink>
 	</Workout>
     </workouts>
