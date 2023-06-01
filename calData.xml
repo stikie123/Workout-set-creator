@@ -30,4 +30,43 @@
     <time></time>
     <exampleLink></exampleLink>
   </Workout>
+<Workout category="calisthenics" tags="beginner" focus="legs">
+	<name>Squats</name>
+	<explanation></explanation>
+	<sets>3x8-12</sets>
+	<rest value="60">60</rest>
+	<exampleLink></exampleLink>
+</Workout>
+
+<Workout category="calisthenics" tags="beginner" focus="arms">
+	<name>Dips</name>
+	<explanation></explanation>
+	<sets>3x8-12</sets>
+	<rest value="60">60</rest>
+	<exampleLink></exampleLink>
+</Workout>
+
+<Workout category="calisthenics" tags="beginner" focus="back">
+	<name>Superman Hold</name>
+	<explanation></explanation>
+	<sets>3xMax</sets>
+	<rest value="60">60</rest>
+	<exampleLink></exampleLink>
+</Workout>
+
+<Workout category="calisthenics" tags="beginner" focus="abs">
+	<name>Crunches</name>
+	<explanation></explanation>
+	<sets>3x18-22</sets>
+	<rest value="60">60</rest>
+	<exampleLink></exampleLink>
+</Workout>
+
+<Workout category="calisthenics" tags="beginner" focus="legs">
+	<name>Lunges</name>
+	<explanation></explanation>
+	<sets>3x8-12</sets>
+	<rest value="60">60</rest>
+	<exampleLink></exampleLink>
+</Workout>
 </workouts>

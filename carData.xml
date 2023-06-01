@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <workouts>
-<Workout category="cardio" tags="beginner" focus="shoulders" >
-		<name>3km Jog</name>
+<Workout category="cardio" tags="beginner" focus="legs" >
+		<name>20 Minute Jog</name>
 		<explanation></explanation>
 		<sets>1x1</sets>
 		<rest value="180">180</rest>
 		<time></time>
 		<exampleLink></exampleLink>
 	</Workout>
+	<Workout category="cardio" tags="beginner" focus="legs">
+	<name>20 Minute Walk</name>
+	<explanation></explanation>
+	<sets>1x1</sets>
+	<rest value="60">60</rest>
+	<time></time>
+	<exampleLink></exampleLink>
+</Workout>
+
+<Workout category="cardio" tags="beginner" focus="full body">
+	<name>10 Minute Jumping Jacks</name>
+	<explanation></explanation>
+	<sets>1x1</sets>
+	<rest value="60">60</rest>
+	<time></time>
+	<exampleLink></exampleLink>
+</Workout>
+
+<Workout category="cardio" tags="beginner" focus="legs">
+	<name>15 Minute Bike Ride</name>
+	<explanation></explanation>
+	<sets>1x1</sets>
+	<rest value="60">60</rest>
+	<time></time>
+	<exampleLink></exampleLink>
+</Workout>
+
+<Workout category="cardio" tags="beginner" focus="legs">
+	<name>10 Minute Stair Climbing</name>
+	<explanation></explanation>
+	<sets>1x1</sets>
+	<rest value="60">60</rest>
+	<time></time>
+	<exampleLink></exampleLink>
+</Workout>
 	 </workouts>
