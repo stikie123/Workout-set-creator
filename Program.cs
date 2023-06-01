@@ -11,6 +11,7 @@ using System.Xml.Linq;
 string? readResult;
 string menuSelection = "";
 string focusAttributeName = "focus";
+int userChoice = 0;
 
 
 
@@ -19,15 +20,15 @@ List<XmlNode> nodeList = new List<XmlNode>();
 do
 {
     Console.Clear();
+
+
     Console.WriteLine("Welcome to the My Prefect workout app. Your main menu options are:");
-    Console.WriteLine(" 1. Calisthenic Workout(alfa till feature 7 is done)");
-    Console.WriteLine(" 2. Weight Workout(beta)");
-    Console.WriteLine(" 3. Cardio Workout(beta)");
-    Console.WriteLine(" 4. Custom workout(alfa)");
-    Console.WriteLine(" 5. Create new category(Under construction)");
-    Console.WriteLine(" 6. Add New workout(under construction)");
-    Console.WriteLine(" 7. Delete a workout(under construction)");
-    Console.WriteLine(" 8. Edit my info(under construction)");
+    Console.WriteLine(" 1. Quick workouts");
+    Console.WriteLine(" 2. Custom workout(under construction)");
+    Console.WriteLine(" 3. Create new category(Under construction)");
+    Console.WriteLine(" 4. Add New workout(under construction)");
+    Console.WriteLine(" 5. Delete a workout(under construction)");
+    Console.WriteLine(" 6. Edit my info(under construction)");
     Console.WriteLine();
     Console.WriteLine("Enter your selection number (or type Exit to exit the program)");
 
@@ -40,193 +41,109 @@ do
     // switch-case to process the selected menu option
     switch (menuSelection)
     {
+        //Quick workouts 
         case "1":
-            List<string> focusCalAttributeValue = new List<string>();
-            XmlDocument calDoc = new XmlDocument();
-            calDoc.Load(@"calData.xml");
-            XmlNodeList calNodes = calDoc.DocumentElement.SelectNodes("/workouts/Workout");
-            //ask what they'd like to focus on
-            string? readResult1;
-            string menuSelection1 = "";
-            Console.WriteLine("What would you like to focus on");
-            Console.WriteLine("1. Full body");
-            Console.WriteLine("2. Upper body");
-            Console.WriteLine("3. Lower body");
-            Console.WriteLine();
-            Console.WriteLine("Enter your selection number");
-
-            readResult1 = Console.ReadLine();
-            if (readResult1 != null)
+            // Get file names in category folder
+            string fileName = "";
+            string[] categoryFilePaths = Directory.GetFiles(@"categoryFiles", "*.xml");
+            // Prompt user to pick a workout category
+            Console.WriteLine("Pick what kind of workout you want to have.");
+            for (int i = 0; i < categoryFilePaths.Length; i++)
             {
-                menuSelection1 = readResult1.ToLower();
+                fileName = Path.GetFileNameWithoutExtension(categoryFilePaths[i]);
+                Console.WriteLine(" {0}: {1} workout", i + 1, fileName);
             }
-            // switch case to process there goal for the day
-            switch (menuSelection1)
+            // Get user's choice
+            userChoice = Convert.ToInt32(Console.ReadLine());
+            // Check if user's choice is valid
+            if (userChoice > 0 && userChoice <= categoryFilePaths.Length)
             {
-                case "1":
-                    focusCalAttributeValue.Add("arms");
-                    focusCalAttributeValue.Add("full body");
-                    focusCalAttributeValue.Add("shoulders");
-                    focusCalAttributeValue.Add("back");
-                    focusCalAttributeValue.Add("pecs");
-                    focusCalAttributeValue.Add("abs");
-                    focusCalAttributeValue.Add("legs");
-                    break;
-                case "2":
-                    focusCalAttributeValue.Add("arms");
-                    focusCalAttributeValue.Add("upper body");
-                    focusCalAttributeValue.Add("shoulders");
-                    focusCalAttributeValue.Add("back");
-                    focusCalAttributeValue.Add("pecs");
-                    focusCalAttributeValue.Add("abs");
-                    break;
-                case "3":
-                    focusCalAttributeValue.Add("lower body");
-                    focusCalAttributeValue.Add("legs");
-                    break;
-                default:
-                    break;
-            }
-
-            foreach (XmlNode node in calNodes)
-            {
-                if (node.Attributes["category"].Value == "calisthenics" && focusCalAttributeValue.Any(focus => node.Attributes["focus"].Value.Contains(focus)))
+                // Create list to store focus attribute values
+                List<string> focusAttributeValue = new List<string>();
+                // Load XML file based on user's choice
+                XmlDocument Doc = new XmlDocument();
+                string fileName1 = $"{Path.GetFileNameWithoutExtension(categoryFilePaths[userChoice - 1])}.xml";
+                string filePath = Path.Combine(@"categoryFiles", fileName1);
+                Doc.Load(filePath);
+                // Get all Workout nodes from XML file
+                XmlNodeList Nodes = Doc.DocumentElement.SelectNodes("/workouts/Workout");
+                // Prompt user to choose focus area
+                string? readResult1;
+                string menuSelection1 = "";
+                Console.WriteLine("What would you like to focus on");
+                Console.WriteLine("1. Full body");
+                Console.WriteLine("2. Upper body");
+                Console.WriteLine("3. Lower body");
+                Console.WriteLine();
+                Console.WriteLine("Enter your selection number");
+                // Get user's focus area choice
+                readResult1 = Console.ReadLine();
+                if (readResult1 != null)
                 {
-                    nodeList.Add(node);
+                    menuSelection1 = readResult1.ToLower();
+                }
+                // Process user's focus area choice using a switch statement
+                switch (menuSelection1)
+                {
+                    case "1":
+                        focusAttributeValue.Add("arms");
+                        focusAttributeValue.Add("full body");
+                        focusAttributeValue.Add("shoulders");
+                        focusAttributeValue.Add("back");
+                        focusAttributeValue.Add("pecs");
+                        focusAttributeValue.Add("abs");
+                        focusAttributeValue.Add("legs");
+                        break;
+                    case "2":
+                        focusAttributeValue.Add("arms");
+                        focusAttributeValue.Add("upper body");
+                        focusAttributeValue.Add("shoulders");
+                        focusAttributeValue.Add("back");
+                        focusAttributeValue.Add("pecs");
+                        focusAttributeValue.Add("abs");
+                        break;
+                    case "3":
+                        focusAttributeValue.Add("lower body");
+                        focusAttributeValue.Add("legs");
+                        break;
+                    default:
+                        break;
+                }
+                // Add nodes that match user's choices to nodeList
+                foreach (XmlNode node in Nodes)
+                {
+                    if (focusAttributeValue.Any(focus => node.Attributes["focus"].Value.Contains(focus)))
+                    {
+                        nodeList.Add(node);
+                    }
+                }
+                // Randomize order of nodes in nodeList
+                Random rng = new Random();
+                int n = nodeList.Count;
+                while (n > 1)
+                {
+                    n--;
+                    int k = rng.Next(n + 1);
+                    XmlNode value = nodeList[k];
+                    nodeList[k] = nodeList[n];
+                    nodeList[n] = value;
+                }
+                // Print out randomized list of workouts
+                foreach (XmlNode node in nodeList)
+                {
+                    Console.WriteLine("Name: " + node["name"].InnerText + " Sets: " + node["sets"].InnerText + " Rest: " + node["rest"].InnerText);
                 }
             }
-            Random rng = new Random();
-            int n = nodeList.Count;
-            while (n > 1)
+            else
             {
-                n--;
-                int k = rng.Next(n + 1);
-                XmlNode value = nodeList[k];
-                nodeList[k] = nodeList[n];
-                nodeList[n] = value;
-            }
-
-            foreach (XmlNode node in nodeList)
-            {
-                Console.WriteLine("Name: " + node["name"].InnerText + " Sets: " + node["sets"].InnerText + " Rest: " + node["rest"].InnerText);
+                Console.WriteLine("Invalid choice");
             }
             nodeList = new List<XmlNode>();
             Console.WriteLine("\n\rPress the Enter key to continue");
             readResult = Console.ReadLine();
-
             break;
-
+        //Custom workouts
         case "2":
-            List<string> focusWeightAttributeValue = new List<string>();
-            XmlDocument weightDoc = new XmlDocument();
-            weightDoc.Load(@"weightData.xml");
-            XmlNodeList weightNodes = weightDoc.DocumentElement.SelectNodes("/workouts/Workout");
-            string? readResult2;
-            string menuSelection2 = "";
-            Console.WriteLine("What would you like to focus on");
-            Console.WriteLine("1. Full body");
-            Console.WriteLine("2. Upper body");
-            Console.WriteLine("3. Lower body");
-            Console.WriteLine();
-            Console.WriteLine("Enter your selection number");
-
-            readResult2 = Console.ReadLine();
-            if (readResult2 != null)
-            {
-                menuSelection2 = readResult2.ToLower();
-            }
-            // switch case to process there goal for the day
-            switch (menuSelection2)
-            {
-                case "1":
-                    focusWeightAttributeValue.Add("arms");
-                    focusWeightAttributeValue.Add("full body");
-                    focusWeightAttributeValue.Add("shoulders");
-                    focusWeightAttributeValue.Add("back");
-                    focusWeightAttributeValue.Add("pecs");
-                    focusWeightAttributeValue.Add("abs");
-                    focusWeightAttributeValue.Add("legs");
-                    break;
-                case "2":
-                    focusWeightAttributeValue.Add("arms");
-                    focusWeightAttributeValue.Add("upper body");
-                    focusWeightAttributeValue.Add("shoulders");
-                    focusWeightAttributeValue.Add("back");
-                    focusWeightAttributeValue.Add("pecs");
-                    focusWeightAttributeValue.Add("abs");
-                    break;
-                case "3":
-                    focusWeightAttributeValue.Add("lower body");
-                    focusWeightAttributeValue.Add("legs");
-                    break;
-                default:
-                    break;
-            }
-
-
-            foreach (XmlNode node in weightNodes)
-            {
-                if (node.Attributes["category"].Value == "weight" && focusWeightAttributeValue.Any(focus => node.Attributes["focus"].Value.Contains(focus)))
-                {
-                    nodeList.Add(node);
-                }
-            }
-            Random rng2 = new Random();
-            int n2 = nodeList.Count;
-            while (n2 > 1)
-            {
-                n2--;
-                int k = rng2.Next(n2 + 1);
-                XmlNode value = nodeList[k];
-                nodeList[k] = nodeList[n2];
-                nodeList[n2] = value;
-            }
-
-            foreach (XmlNode node in nodeList)
-            {
-                Console.WriteLine("Name: " + node["name"].InnerText + " Sets: " + node["sets"].InnerText + " Rest: " + node["rest"].InnerText);
-            }
-            nodeList = new List<XmlNode>();
-            Console.WriteLine("\n\rPress the Enter key to continue");
-            readResult = Console.ReadLine();
-
-            break;
-
-        case "3":
-
-            XmlDocument carDoc = new XmlDocument();
-            carDoc.Load(@"carData.xml");
-            XmlNodeList carNodes = carDoc.DocumentElement.SelectNodes("/workouts/Workout");
-
-            foreach (XmlNode node in carNodes)
-            {
-                if (node.Attributes["category"].Value == "cardio")
-                {
-                    nodeList.Add(node);
-                }
-            }
-            Random rng3 = new Random();
-            int n3 = nodeList.Count;
-            while (n3 > 1)
-            {
-                n3--;
-                int k = rng3.Next(n3 + 1);
-                XmlNode value = nodeList[k];
-                nodeList[k] = nodeList[n3];
-                nodeList[n3] = value;
-            }
-
-            foreach (XmlNode node in nodeList)
-            {
-                Console.WriteLine("Name: " + node["name"].InnerText + " Sets: " + node["sets"].InnerText + " Rest: " + node["rest"].InnerText);
-            }
-            nodeList = new List<XmlNode>();
-            Console.WriteLine("\n\rPress the Enter key to continue");
-            readResult = Console.ReadLine();
-
-            break;
-
-        case "4":
 
             string attributeName = "category";
             Console.WriteLine("Enter the category you want to search for:");
@@ -344,7 +261,7 @@ do
             readResult = Console.ReadLine();
             break;
 
-        case "6":
+        case "3":
             string tags = "";
             string focus = "";
             string name = "";
