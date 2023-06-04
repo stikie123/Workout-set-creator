@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <workouts>
-<Workout category="weight" tags="beginner" focus="shoulders" >
+	<Workout category="weight" tags="beginner" focus="shoulders">
 		<name>front arms raise hold</name>
 		<explanation></explanation>
 		<sets>3xMax</sets>
-		<rest value="60">60</rest>
-		<time></time>
+		<rest>60</rest>
+		<time>300</time>
 		<exampleLink></exampleLink>
 	</Workout>
-	<Workout category="weight" tags="beginner" focus="shoulders" >
+	<Workout category="weight" tags="beginner" focus="shoulders">
 		<name>face pull</name>
 		<explanation></explanation>
 		<sets>3x8-12</sets>
-		<rest value="60">60</rest>
-		<time></time>
+		<rest>60</rest>
+		<time>300</time>
 		<exampleLink></exampleLink>
 	</Workout>
 	<Workout category="weight" tags="beginner" focus="pecs">
 		<name>overhead press</name>
 		<explanation></explanation>
 		<sets>3xMax</sets>
-		<rest value="60">60</rest>
-		<time></time>
+		<rest>60</rest>
+		<time>300</time>
 		<exampleLink></exampleLink>
 	</Workout>
-    </workouts>
+</workouts>

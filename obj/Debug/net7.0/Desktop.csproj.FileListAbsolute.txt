@@ -28,3 +28,18 @@ C:\Users\User\OneDrive\Desktop\Wourkout set creator\obj\Debug\net7.0\refint\Desk
 C:\Users\User\OneDrive\Desktop\Wourkout set creator\obj\Debug\net7.0\Desktop.pdb
 C:\Users\User\OneDrive\Desktop\Wourkout set creator\obj\Debug\net7.0\Desktop.genruntimeconfig.cache
 C:\Users\User\OneDrive\Desktop\Wourkout set creator\obj\Debug\net7.0\ref\Desktop.dll
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\bin\Debug\net7.0\Desktop.exe
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\bin\Debug\net7.0\Desktop.deps.json
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\bin\Debug\net7.0\Desktop.runtimeconfig.json
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\bin\Debug\net7.0\Desktop.dll
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\bin\Debug\net7.0\Desktop.pdb
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\Desktop.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\Desktop.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\Desktop.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\Desktop.AssemblyInfo.cs
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\Desktop.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\Desktop.dll
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\refint\Desktop.dll
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\Desktop.pdb
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\Desktop.genruntimeconfig.cache
+C:\Users\User\OneDrive\Documents\Development-Caffeine-converter\Busy projects\Wourkout set creator\obj\Debug\net7.0\ref\Desktop.dll

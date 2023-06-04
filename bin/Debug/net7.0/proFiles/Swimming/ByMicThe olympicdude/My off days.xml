@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<workouts>
+    <Workout category="warm up" tags="beginner" focus="shoulders">
+        <name>freestyle on 50sec</name>
+        <explanation></explanation>
+        <sets>10x50m</sets>
+        <rest>60</rest>
+        <time>300</time>
+        <exampleLink></exampleLink>
+    </Workout>
+    <Workout category="main" tags="beginner" focus="shoulders">
+        <name>freestyle on 50sec</name>
+        <explanation></explanation>
+        <sets>10x50m</sets>
+        <rest>60</rest>
+        <time>300</time>
+        <exampleLink></exampleLink>
+    </Workout>
+</workouts>

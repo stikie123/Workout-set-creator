@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<workouts>
+  <Workout category="calisthenics" tags="beginner" focus="shoulders">
+    <name>Wall Stand</name>
+    <explanation></explanation>
+    <sets>3xMax</sets>
+    <rest>60</rest>
+    <time>300</time>
+    <exampleLink></exampleLink>
+  </Workout>
+  <Workout category="calisthenics" tags="beginner" focus="back, abs">
+    <name>Plank</name>
+    <explanation></explanation>
+    <sets>3xMax</sets>
+    <rest>60</rest>
+    <time>300</time>
+    <exampleLink></exampleLink>
+  </Workout>
+  <Workout category="calisthenics" tags="beginner" focus="arms, shoulders">
+    <name>Normal push-up</name>
+    <explanation></explanation>
+    <sets>3x8-12</sets>
+    <rest>30</rest>
+    <time>300</time>
+    <exampleLink></exampleLink>
+  </Workout>
+  <Workout category="calisthenics" tags="beginner" focus="shoulders">
+    <name>Pike hold</name>
+    <explanation></explanation>
+    <sets>3xMax</sets>
+    <rest>30</rest>
+    <time>300</time>
+    <exampleLink></exampleLink>
+  </Workout>
+  <Workout category="calisthenics" tags="beginner" focus="legs">
+    <name>Squats</name>
+    <explanation></explanation>
+    <sets>3x8-12</sets>
+    <rest>60</rest>
+    <time>300</time>
+    <exampleLink></exampleLink>
+  </Workout>
+
+  <Workout category="calisthenics" tags="beginner" focus="arms">
+    <name>Dips</name>
+    <explanation></explanation>
+    <sets>3x8-12</sets>
+    <rest>60</rest>
+    <time>300</time>
+    <exampleLink></exampleLink>
+  </Workout>
+
+  <Workout category="calisthenics" tags="pro" focus="back">
+    <name>Superman Hold</name>
+    <explanation></explanation>
+    <sets>3xMax</sets>
+    <rest>60</rest>
+    <time>300</time>
+    <exampleLink></exampleLink>
+  </Workout>
+
+  <Workout category="calisthenics" tags="beginner" focus="abs">
+    <name>Crunches</name>
+    <explanation></explanation>
+    <sets>3x18-22</sets>
+    <rest>60</rest>
+    <time>300</time>
+    <exampleLink></exampleLink>
+  </Workout>
+
+  <Workout category="calisthenics" tags="beginner" focus="legs">
+    <name>Lunges</name>
+    <explanation></explanation>
+    <sets>3x8-12</sets>
+    <rest>60</rest>
+    <time>300</time>
+    <exampleLink></exampleLink>
+  </Workout>
+</workouts>
