@@ -32,11 +32,10 @@ do
         case "1":
             Console.Clear();
             Console.WriteLine(" 1. Quick workout");
-            Console.WriteLine(" 2. Custom workout(under construction)");
-            Console.WriteLine(" 3. Add New workout(under construction)");
-            Console.WriteLine(" 4. List your workouts(under construction)");
-            Console.WriteLine(" 5. Create new category(Under construction)");
-            Console.WriteLine(" 6. Delete a workout(under construction)");
+            Console.WriteLine(" 2. Add New workout(under construction)");
+            Console.WriteLine(" 3. List your workouts(under construction)");
+            Console.WriteLine(" 4. Create new category(Under construction)");
+            Console.WriteLine(" 5. Delete a workout or category(under construction)");
             Console.WriteLine();
             Console.WriteLine("Enter your selection number (or type Exit to exit the program)");
 
@@ -76,65 +75,104 @@ do
                         // Get all Workout nodes from XML file
                         XmlNodeList Nodes = Doc.DocumentElement.SelectNodes("/workouts/Workout");
                         // Prompt user to choose focus area
-                        string? readResult1;
-                        string menuSelection1 = "";
-                        Console.WriteLine("What would you like to focus on");
-                        Console.WriteLine("1. Full body");
-                        Console.WriteLine("2. Upper body");
-                        Console.WriteLine("3. Lower body");
-                        Console.WriteLine();
-                        Console.WriteLine("Enter your selection number");
-                        // Get user's focus area choice
-                        readResult1 = Console.ReadLine();
-                        if (readResult1 != null)
+
+                        bool selectingFocusAreas = true;
+                        while (selectingFocusAreas)
                         {
-                            menuSelection1 = readResult1.ToLower();
-                        }
-                        // Process user's focus area choice using a switch statement
-                        switch (menuSelection1)
-                        {
-                            case "1":
-                                focusAttributeValue.Add("arms");
-                                focusAttributeValue.Add("full body");
-                                focusAttributeValue.Add("shoulders");
-                                focusAttributeValue.Add("back");
-                                focusAttributeValue.Add("pecs");
-                                focusAttributeValue.Add("abs");
-                                focusAttributeValue.Add("legs");
-                                break;
-                            case "2":
-                                focusAttributeValue.Add("arms");
-                                focusAttributeValue.Add("upper body");
-                                focusAttributeValue.Add("shoulders");
-                                focusAttributeValue.Add("back");
-                                focusAttributeValue.Add("pecs");
-                                focusAttributeValue.Add("abs");
-                                break;
-                            case "3":
-                                focusAttributeValue.Add("lower body");
-                                focusAttributeValue.Add("legs");
-                                break;
-                            default:
-                                break;
+                            string? readResult1;
+                            string menuSelection1 = "";
+                            Console.WriteLine("What would you like to focus on");
+                            Console.WriteLine(" 1. Full body");
+                            Console.WriteLine(" 2. Upper body");
+                            Console.WriteLine(" 3. Lower body");
+                            Console.WriteLine(" 4. Arms");
+                            Console.WriteLine(" 5. Legs");
+                            Console.WriteLine(" 6. Shoulders");
+                            Console.WriteLine(" 7. Back");
+                            Console.WriteLine(" 8. Abs");
+                            Console.WriteLine(" 9. Pecs");
+                            Console.WriteLine(" 10. Done selecting focus areas");
+                            Console.WriteLine();
+                            Console.WriteLine("Enter your selection number");
+                            // Get user's focus area choice
+                            readResult1 = Console.ReadLine();
+                            if (readResult1 != null)
+                            {
+                                menuSelection1 = readResult1.ToLower();
+                            }
+                            // Process user's focus area choice using a switch statement
+                            switch (menuSelection1)
+                            {
+                                case "1":
+                                    focusAttributeValue.Add("arms");
+                                    focusAttributeValue.Add("full body");
+                                    focusAttributeValue.Add("shoulders");
+                                    focusAttributeValue.Add("back");
+                                    focusAttributeValue.Add("pecs");
+                                    focusAttributeValue.Add("abs");
+                                    focusAttributeValue.Add("legs");
+                                    break;
+                                case "2":
+                                    focusAttributeValue.Add("arms");
+                                    focusAttributeValue.Add("upper body");
+                                    focusAttributeValue.Add("shoulders");
+                                    focusAttributeValue.Add("back");
+                                    focusAttributeValue.Add("pecs");
+                                    focusAttributeValue.Add("abs");
+                                    break;
+                                case "3":
+                                    focusAttributeValue.Add("lower body");
+                                    focusAttributeValue.Add("legs");
+                                    break;
+                                case "4":
+                                    focusAttributeValue.Add("arms");
+                                    break;
+
+                                case "5":
+                                    focusAttributeValue.Add("legs");
+                                    break;
+
+                                case "6":
+                                    focusAttributeValue.Add("shoulders");
+                                    break;
+
+                                case "7":
+                                    focusAttributeValue.Add("back");
+                                    break;
+
+                                case "8":
+                                    focusAttributeValue.Add("abs");
+                                    break;
+
+                                case "9":
+                                    focusAttributeValue.Add("pecs");
+                                    break;
+
+                                case "10":
+                                    selectingFocusAreas = false;
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                         // asks user 
-                        string tagsAttributeName = "tags";
+                        string tagsAttributeName1 = "tags";
                         Console.WriteLine("Enter your skill level:");
                         Console.WriteLine(" 1. Beginner");
                         Console.WriteLine(" 2. Intermediate");
                         Console.WriteLine(" 3. Pro");
-                        string tagsAttributeValue = Console.ReadLine();
-                        switch (tagsAttributeValue)
+                        string tagsAttributeValue1 = Console.ReadLine();
+                        switch (tagsAttributeValue1)
                         {
                             case "1":
-                                tagsAttributeValue = "beginner";
+                                tagsAttributeValue1 = "beginner";
                                 break;
 
                             case "2":
-                                tagsAttributeValue = "intermediate";
+                                tagsAttributeValue1 = "intermediate";
                                 break;
                             case "3":
-                                tagsAttributeValue = "pro";
+                                tagsAttributeValue1 = "pro";
                                 break;
                             default:
                                 break;
@@ -144,7 +182,7 @@ do
                         // Add nodes that match req to nodeList
                         foreach (XmlNode node in Nodes)
                         {
-                            if (focusAttributeValue.Any(focus => node.Attributes["focus"].Value.Contains(focus)) && tagsAttributeValue == node.Attributes["tags"].InnerText)
+                            if (focusAttributeValue.Any(focus => node.Attributes["focus"].Value.Contains(focus)) && tagsAttributeValue1 == node.Attributes["tags"].InnerText)
                             {
                                 nodeList.Add(node);
                             }
@@ -162,15 +200,15 @@ do
                             nodeList[n] = value;
                         }
                         int exerciseTime = 0;
-                        if (tagsAttributeValue == "beginner")
+                        if (tagsAttributeValue1 == "beginner")
                         {
                             exerciseTime = 1800;
                         }
-                        else if (tagsAttributeValue == "intermediate")
+                        else if (tagsAttributeValue1 == "intermediate")
                         {
                             exerciseTime = 3600;
                         }
-                        else if (tagsAttributeValue == "pro")
+                        else if (tagsAttributeValue1 == "pro")
                         {
                             exerciseTime = 5400;
                         }
@@ -190,8 +228,12 @@ do
                         // Print out randomized list of workouts
                         foreach (XmlNode node in nodeList)
                         {
-
-                            Console.WriteLine("Name: " + node["name"].InnerText + " Sets: " + node["sets"].InnerText + " Rest: " + node["rest"].InnerText);
+                            Console.WriteLine("Workout: {0}", node["name"].InnerText);
+                            Console.WriteLine("  focus: {0}", node.Attributes["focus"].InnerText);
+                            Console.WriteLine("  Explanation: {0}", node["explanation"].InnerText);
+                            Console.WriteLine("  Sets: {0}", node["sets"].InnerText);
+                            Console.WriteLine("  Rest: {0}", node["rest"].InnerText);
+                            Console.WriteLine("  Example link: {0}", node["exampleLink"].InnerText);
                         }
                         // prints total time of exercise
                         Console.WriteLine(totalTime / 60 + "min in Total");
@@ -204,266 +246,147 @@ do
                     Console.WriteLine("\n\rPress the Enter key to continue");
                     readResult = Console.ReadLine();
                     break;
-                //Custom workouts
-                // case "2":
+                case "4":
+                    string tags = "";
+                    string focus = "";
+                    string name = "";
+                    string explanation = "";
+                    string sets = "";
+                    string rest = "";
+                    string time = "";
+                    string link = "";
+                    string didCancel = "";
+                    //checks if you want to cancel
+                    do
+                    {
+                        Console.WriteLine("\n\r*Which type of workout would you like to add?");
+                        Console.WriteLine(" 1. Calisthenics");
+                        Console.WriteLine(" 2. Weight");
+                        Console.WriteLine(" 3. Cardio");
+                        string fileSelection = Console.ReadLine();
+                        if (fileSelection == "cancel")
+                        {
+                            didCancel = "true";
+                            break;
+                        }
+                        string selectedFile = "";
+                        string category = "";
+                        switch (fileSelection)
+                        {
+                            case "1":
+                                selectedFile = @"calData.xml";
+                                category = "calisthenics";
+                                break;
 
-                //     string attributeName = "category";
-                //     Console.WriteLine("Enter the category you want to search for:");
-                //     Console.WriteLine(" 1. Calisthenics");
-                //     Console.WriteLine(" 2. Weight");
-                //     Console.WriteLine(" 3. Cardio");
-                //     string attributeValue = Console.ReadLine();
-                //     switch (attributeValue)
-                //     {
-                //         case "1":
-                //             attributeValue = "calisthenics";
-                //             break;
+                            case "2":
+                                selectedFile = @"weightData.xml";
+                                category = "weight";
+                                break;
+                            case "3":
+                                selectedFile = @"carData.xml";
+                                category = "cardio";
+                                break;
+                            default:
+                                break;
+                        }
+                        //adddd cases
+                        Console.WriteLine("*Enter the workout tags (e.g. beginner): ");
+                        tags = Console.ReadLine();
+                        if (tags == "cancel")
+                        {
+                            didCancel = "true";
+                            break;
+                        }
+                        // adddd cases
+                        Console.WriteLine("*Enter the workout focus (e.g. shoulders): ");
+                        focus = Console.ReadLine();
+                        if (focus == "cancel")
+                        {
+                            didCancel = "true";
+                        }
 
-                //         case "2":
-                //             attributeValue = "weight";
-                //             break;
-                //         case "3":
-                //             attributeValue = "cardio";
-                //             break;
-                //         default:
-                //             break;
-                //     }
+                        Console.WriteLine("*Enter the workout name (e.g. 3km Jog): ");
+                        name = Console.ReadLine();
+                        if (name == "cancel")
+                        {
+                            didCancel = "true";
+                            break;
+                        }
 
-                //     List<string> focusAttributeValues = new List<string>();
-                //     bool selectingFocusAreas = true;
-                //     while (selectingFocusAreas)
-                //     {
-                //         Console.WriteLine("Enter the focus you want to work on:(choose one at a time)");
-                //         Console.WriteLine(" 1. Arms");
-                //         Console.WriteLine(" 2. Legs");
-                //         Console.WriteLine(" 3. Shoulders");
-                //         Console.WriteLine(" 4. Back");
-                //         Console.WriteLine(" 5. Abs");
-                //         Console.WriteLine(" 6. Pecs");
-                //         Console.WriteLine(" 7. Done selecting focus areas");
-                //         string focusAttributeValue = Console.ReadLine();
-                //         switch (focusAttributeValue)
-                //         {
-                //             case "1":
-                //                 focusAttributeValues.Add("arms");
-                //                 break;
+                        Console.WriteLine("*Enter the workout explanation: ");
+                        explanation = Console.ReadLine();
+                        if (explanation == "cancel")
+                        {
+                            didCancel = "true";
+                            break;
+                        }
 
-                //             case "2":
-                //                 focusAttributeValues.Add("legs");
-                //                 break;
+                        Console.WriteLine("*Enter the number of sets and reps (e.g. 1x1): ");
+                        sets = Console.ReadLine();
+                        if (sets == "cancel")
+                        {
+                            didCancel = "true";
+                            break;
+                        }
 
-                //             case "3":
-                //                 focusAttributeValues.Add("shoulders");
-                //                 break;
+                        Console.WriteLine("*Enter the rest time in seconds (e.g. 180): ");
+                        rest = Console.ReadLine();
+                        if (rest == "cancel")
+                        {
+                            didCancel = "true";
+                            break;
+                        }
 
-                //             case "4":
-                //                 focusAttributeValues.Add("back");
-                //                 break;
+                        Console.WriteLine("*Enter the workout time: ");
+                        time = Console.ReadLine();
+                        if (time == "cancel")
+                        {
+                            didCancel = "true";
+                            break;
+                        }
 
-                //             case "5":
-                //                 focusAttributeValues.Add("abs");
-                //                 break;
+                        Console.WriteLine("Enter a link for the workout (e.g. https://www.example.com/workout): ");
+                        link = Console.ReadLine();
+                        if (link == "cancel")
+                        {
+                            didCancel = "true";
+                            break;
+                        }
 
-                //             case "6":
-                //                 focusAttributeValues.Add("pecs");
-                //                 break;
-
-                //             case "7":
-                //                 selectingFocusAreas = false;
-                //                 break;
-
-                //             default:
-                //                 break;
-                //         }
-                //     }
-                //     string tagsAttributeName = "tags";
-                //     Console.WriteLine("Enter your skill level:");
-                //     Console.WriteLine(" 1. Beginner");
-                //     Console.WriteLine(" 2. Intermediate");
-                //     Console.WriteLine(" 3. Pro");
-                //     string tagsAttributeValue = Console.ReadLine();
-                //     switch (tagsAttributeValue)
-                //     {
-                //         case "1":
-                //             tagsAttributeValue = "beginner";
-                //             break;
-
-                //         case "2":
-                //             tagsAttributeValue = "intermediate";
-                //             break;
-                //         case "3":
-                //             tagsAttributeValue = "pro";
-                //             break;
-                //         default:
-                //             break;
-                //     }
-
-                //     List<string> xmlFiles = new List<string> { @"calData.xml", @"weightData.xml", @"carData.xml" };
-                //     foreach (string xmlFile in xmlFiles)
-                //     {
-                //         XmlDocument doc4 = new XmlDocument();
-                //         doc4.Load(xmlFile);
-                //         XmlNodeList nodes = doc4.DocumentElement.SelectNodes("/workouts/Workout");
-
-                //         foreach (XmlNode node in nodes)
-                //         {
-                //             if (node.Attributes[attributeName].Value == attributeValue && focusAttributeValues.Any(focus => node.Attributes[focusAttributeName].Value.Contains(focus)) && node.Attributes[tagsAttributeName].Value == tagsAttributeValue)
-                //             {
-                //                 nodeList.Add(node);
-                //             }
-                //         }
-                //     }
-
-                //     foreach (XmlNode node in nodeList)
-                //     {
-                //         Console.WriteLine("Name: " + node["name"].InnerText + " Sets: " + node["sets"].InnerText + " Rest: " + node["rest"].InnerText);
-                //     }
-                //     nodeList = new List<XmlNode>();
-                //     Console.WriteLine("\n\rPress the Enter key to continue");
-                //     readResult = Console.ReadLine();
-                //     break;
-
-                // case "4":
-                //         string tags = "";
-                //         string focus = "";
-                //         string name = "";
-                //         string explanation = "";
-                //         string sets = "";
-                //         string rest = "";
-                //         string time = "";
-                //         string link = "";
-                //         string didCancel = "";
-                //         //checks if you want to cancel
-                //         do
-                //         {
-                //             Console.WriteLine("\n\r*Which type of workout would you like to add?");
-                //             Console.WriteLine(" 1. Calisthenics");
-                //             Console.WriteLine(" 2. Weight");
-                //             Console.WriteLine(" 3. Cardio");
-                //             string fileSelection = Console.ReadLine();
-                //             if (fileSelection == "cancel")
-                //             {
-                //                 didCancel = "true";
-                //                 break;
-                //             }
-                //             string selectedFile = "";
-                //             string category = "";
-                //             switch (fileSelection)
-                //             {
-                //                 case "1":
-                //                     selectedFile = @"calData.xml";
-                //                     category = "calisthenics";
-                //                     break;
-
-                //                 case "2":
-                //                     selectedFile = @"weightData.xml";
-                //                     category = "weight";
-                //                     break;
-                //                 case "3":
-                //                     selectedFile = @"carData.xml";
-                //                     category = "cardio";
-                //                     break;
-                //                 default:
-                //                     break;
-                //             }
-                //             //adddd cases
-                //             Console.WriteLine("*Enter the workout tags (e.g. beginner): ");
-                //             tags = Console.ReadLine();
-                //             if (tags == "cancel")
-                //             {
-                //                 didCancel = "true";
-                //                 break;
-                //             }
-                //             // adddd cases
-                //             Console.WriteLine("*Enter the workout focus (e.g. shoulders): ");
-                //             focus = Console.ReadLine();
-                //             if (focus == "cancel")
-                //             {
-                //                 didCancel = "true";
-                //             }
-
-                //             Console.WriteLine("*Enter the workout name (e.g. 3km Jog): ");
-                //             name = Console.ReadLine();
-                //             if (name == "cancel")
-                //             {
-                //                 didCancel = "true";
-                //                 break;
-                //             }
-
-                //             Console.WriteLine("*Enter the workout explanation: ");
-                //             explanation = Console.ReadLine();
-                //             if (explanation == "cancel")
-                //             {
-                //                 didCancel = "true";
-                //                 break;
-                //             }
-
-                //             Console.WriteLine("*Enter the number of sets and reps (e.g. 1x1): ");
-                //             sets = Console.ReadLine();
-                //             if (sets == "cancel")
-                //             {
-                //                 didCancel = "true";
-                //                 break;
-                //             }
-
-                //             Console.WriteLine("*Enter the rest time in seconds (e.g. 180): ");
-                //             rest = Console.ReadLine();
-                //             if (rest == "cancel")
-                //             {
-                //                 didCancel = "true";
-                //                 break;
-                //             }
-
-                //             Console.WriteLine("*Enter the workout time: ");
-                //             time = Console.ReadLine();
-                //             if (time == "cancel")
-                //             {
-                //                 didCancel = "true";
-                //                 break;
-                //             }
-
-                //             Console.WriteLine("Enter a link for the workout (e.g. https://www.example.com/workout): ");
-                //             link = Console.ReadLine();
-                //             if (link == "cancel")
-                //             {
-                //                 didCancel = "true";
-                //                 break;
-                //             }
-
-                //             // Check if any input is null or empty
-                //             if (string.IsNullOrEmpty(category) || string.IsNullOrEmpty(tags) || string.IsNullOrEmpty(focus) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(explanation) || string.IsNullOrEmpty(sets) || string.IsNullOrEmpty(rest) || string.IsNullOrEmpty(time))
-                //             {
-                //                 Console.WriteLine("Error: All fields are required. Please enter values for all fields.*");
-                //             }
-                //             else
-                //             {
+                        // Check if any input is null or empty
+                        if (string.IsNullOrEmpty(category) || string.IsNullOrEmpty(tags) || string.IsNullOrEmpty(focus) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(explanation) || string.IsNullOrEmpty(sets) || string.IsNullOrEmpty(rest) || string.IsNullOrEmpty(time))
+                        {
+                            Console.WriteLine("Error: All fields are required. Please enter values for all fields.*");
+                        }
+                        else
+                        {
 
 
-                //                 XDocument doc5 = XDocument.Load(selectedFile);
+                            XDocument doc5 = XDocument.Load(selectedFile);
 
-                //                 // Create a new Workout element
-                //                 XElement workout = new XElement("Workout",
-                //                     new XAttribute("category", category),
-                //                     new XAttribute("tags", tags),
-                //                     new XAttribute("focus", focus),
-                //                     new XElement("name", name),
-                //                     new XElement("explanation", explanation),
-                //                     new XElement("sets", sets),
-                //                     new XElement("rest", rest),
-                //                     new XElement("time", time),
-                //                     new XElement("link", link)
-                //                 );
+                            // Create a new Workout element
+                            XElement workout = new XElement("Workout",
+                                new XAttribute("category", category),
+                                new XAttribute("tags", tags),
+                                new XAttribute("focus", focus),
+                                new XElement("name", name),
+                                new XElement("explanation", explanation),
+                                new XElement("sets", sets),
+                                new XElement("rest", rest),
+                                new XElement("time", time),
+                                new XElement("link", link)
+                            );
 
-                //                 // Add the new Workout element to the workouts element
-                //                 doc5.Element("workouts").Add(workout);
+                            // Add the new Workout element to the workouts element
+                            doc5.Element("workouts").Add(workout);
 
-                //                 // Save the updated XML document
-                //                 doc5.Save(selectedFile);
-                //             }
-                //             Console.WriteLine("\n\rPress the Enter key to continue");
-                //             readResult = Console.ReadLine();
-                //         } while (didCancel != "true");
-                //         break;
+                            // Save the updated XML document
+                            doc5.Save(selectedFile);
+                        }
+                        Console.WriteLine("\n\rPress the Enter key to continue");
+                        readResult = Console.ReadLine();
+                    } while (didCancel != "true");
+                    break;
 
                 default:
                     break;
@@ -509,7 +432,7 @@ do
                     Console.WriteLine("Pick an XML file:");
                     for (int i = 0; i < xmlFiles.Length; i++)
                     {
-                        string xmlFileName = Path.GetFileName(xmlFiles[i]);
+                        string xmlFileName = Path.GetFileNameWithoutExtension(xmlFiles[i]);
                         Console.WriteLine(" {0}: {1}", i + 1, xmlFileName);
                     }
                     // Get user's choice
