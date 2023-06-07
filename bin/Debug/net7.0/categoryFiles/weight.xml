@@ -16,7 +16,7 @@
 		<time>300</time>
 		<exampleLink></exampleLink>
 	</Workout>
-	<Workout category="weight" tags="beginner" focus="pecs">
+	<Workout category="weight" tags="beginner" focus="chest">
 		<name>overhead press</name>
 		<explanation></explanation>
 		<sets>3xMax</sets>

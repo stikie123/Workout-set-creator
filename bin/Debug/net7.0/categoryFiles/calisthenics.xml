@@ -1,22 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <workouts>
-  <Workout category="calisthenics" tags="beginner" focus="shoulders">
+  <Workout tags="beginner" focus="shoulders">
     <name>Wall Stand</name>
-    <explanation></explanation>
+    <explanation>
+    </explanation>
     <sets>3xMax</sets>
     <rest>60</rest>
     <time>300</time>
-    <exampleLink></exampleLink>
+    <exampleLink>
+    </exampleLink>
   </Workout>
-  <Workout category="calisthenics" tags="beginner" focus="back, abs">
+  <Workout tags="beginner" focus="back, abs">
     <name>Plank</name>
-    <explanation></explanation>
+    <explanation>
+    </explanation>
     <sets>3xMax</sets>
     <rest>60</rest>
     <time>300</time>
-    <exampleLink></exampleLink>
+    <exampleLink>
+    </exampleLink>
   </Workout>
-  <Workout category="calisthenics" tags="beginner" focus="arms, shoulders">
+  <Workout tags="beginner" focus="arms, shoulders">
     <name>Normal push-up</name>
     <explanation>1</explanation>
     <sets>3x8-12</sets>
@@ -24,7 +28,7 @@
     <time>300</time>
     <exampleLink>1</exampleLink>
   </Workout>
-  <Workout category="calisthenics" tags="beginner" focus="shoulders">
+  <Workout tags="beginner" focus="shoulders">
     <name>Pike hold</name>
     <explanation>1</explanation>
     <sets>3xMax</sets>
@@ -32,7 +36,7 @@
     <time>300</time>
     <exampleLink>1</exampleLink>
   </Workout>
-  <Workout category="calisthenics" tags="beginner" focus="legs">
+  <Workout tags="beginner" focus="legs">
     <name>Squats</name>
     <explanation>1</explanation>
     <sets>3x8-12</sets>
@@ -40,8 +44,7 @@
     <time>300</time>
     <exampleLink>1</exampleLink>
   </Workout>
-
-  <Workout category="calisthenics" tags="beginner" focus="arms">
+  <Workout tags="beginner" focus="arms">
     <name>Dips</name>
     <explanation>1</explanation>
     <sets>3x8-12</sets>
@@ -49,8 +52,7 @@
     <time>300</time>
     <exampleLink>1</exampleLink>
   </Workout>
-
-  <Workout category="calisthenics" tags="pro" focus="back">
+  <Workout tags="pro" focus="back">
     <name>Superman Hold</name>
     <explanation>1</explanation>
     <sets>3xMax</sets>
@@ -58,8 +60,7 @@
     <time>300</time>
     <exampleLink>1</exampleLink>
   </Workout>
-
-  <Workout category="calisthenics" tags="beginner" focus="abs">
+  <Workout tags="beginner" focus="abs">
     <name>Crunches</name>
     <explanation>1</explanation>
     <sets>3x18-22</sets>
@@ -67,8 +68,7 @@
     <time>300</time>
     <exampleLink>1</exampleLink>
   </Workout>
-
-  <Workout category="calisthenics" tags="beginner" focus="legs">
+  <Workout tags="beginner" focus="legs">
     <name>Lunges</name>
     <explanation>1</explanation>
     <sets>3x8-12</sets>
