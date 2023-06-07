@@ -286,10 +286,6 @@ do
                         // Get user's choice
                         userChoice = Convert.ToInt32(readResult);
                     }
-                    else
-                    {
-                        break;
-                    }
 
                     // Check if user's choice is valid
                     if (userChoice > 0 && userChoice <= categoryFilePaths.Length)
@@ -305,10 +301,6 @@ do
                     readResult = Console.ReadLine();
                     // Get user's choice
                     name = readResult;
-                    if (readResult == null)
-                    {
-                        break;
-                    }
                     Console.WriteLine("*Pick the workout tag ");
                     Console.WriteLine(" 1. Beginner");
                     Console.WriteLine(" 2. intermediate");
@@ -336,7 +328,6 @@ do
                         }
                     }
 
-                    // adddd cases
                     Console.WriteLine("*Enter the workout focus (e.g. shoulders): ");
                     Console.WriteLine("List of workout focuses:");
                     Console.WriteLine(" 1. Full body");
@@ -422,52 +413,33 @@ do
                     readResult = Console.ReadLine();
                     // Get user's choice
                     explanation = readResult;
-                    if (readResult == null)
-                    {
-                        break;
-                    }
+
 
                     Console.WriteLine("*Enter the number of sets and reps (e.g. 1x1): ");
                     readResult = Console.ReadLine();
                     // Get user's choice
                     sets = readResult;
-                    if (readResult == null)
-                    {
-                        break;
-                    }
 
                     Console.WriteLine("*Enter the rest time in seconds (e.g. 180): ");
                     readResult = Console.ReadLine();
                     // Get user's choice
                     rest = readResult;
-                    if (readResult == null)
-                    {
-                        break;
-                    }
 
                     Console.WriteLine("*Enter the time it takes to complete workout: ");
                     readResult = Console.ReadLine();
                     // Get user's choice
                     time = readResult;
-                    if (readResult == null)
-                    {
-                        break;
-                    }
 
 
                     Console.WriteLine("Enter a link for the workout (e.g. https://www.example.com/workout): ");
                     readResult = Console.ReadLine();
                     // Get user's choice
                     link = readResult;
-                    if (readResult == null)
-                    {
-                        break;
-                    }
 
                     // Check if any input is null or empty
                     if (string.IsNullOrEmpty(tags) || focusAttributeValue2.Count == 0 || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(explanation) || string.IsNullOrEmpty(sets) || string.IsNullOrEmpty(rest) || string.IsNullOrEmpty(time))
                     {
-                        Console.WriteLine("Error: All fields are required. Please enter values for all fields.*");
+                        Console.WriteLine("Error: All *fields are required. Please enter values for all fields.*");
                     }
                     else
                     {
@@ -477,7 +449,7 @@ do
                         {
                             break;
                         }
-                        else if (readResult == null)
+                        else if (readResult == "")
                         {
                             try
                             {
@@ -543,6 +515,7 @@ do
                 // List Your Workouts (Under Construction)
                 case "3":
                     Console.WriteLine("This feature is under construction. Please try another option.");
+
                     break;
 
                 // Create New Category (Under Construction)
