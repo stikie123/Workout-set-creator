@@ -2,26 +2,26 @@
 <workouts>
 	<Workout category="weight" tags="beginner" focus="shoulders">
 		<name>front arms raise hold</name>
-		<explanation></explanation>
+		<explanation>1</explanation>
 		<sets>3xMax</sets>
 		<rest>60</rest>
 		<time>300</time>
-		<exampleLink></exampleLink>
+		<exampleLink>1</exampleLink>
 	</Workout>
 	<Workout category="weight" tags="beginner" focus="shoulders">
 		<name>face pull</name>
-		<explanation></explanation>
+		<explanation>1</explanation>
 		<sets>3x8-12</sets>
 		<rest>60</rest>
 		<time>300</time>
-		<exampleLink></exampleLink>
+		<exampleLink>1</exampleLink>
 	</Workout>
 	<Workout category="weight" tags="beginner" focus="chest">
 		<name>overhead press</name>
-		<explanation></explanation>
+		<explanation>1</explanation>
 		<sets>3xMax</sets>
 		<rest>60</rest>
 		<time>300</time>
-		<exampleLink></exampleLink>
+		<exampleLink>1</exampleLink>
 	</Workout>
 </workouts>

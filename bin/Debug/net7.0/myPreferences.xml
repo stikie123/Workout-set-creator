@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<root>
-    <preferences>
-        <workoutTimeBeginner>1800</workoutTimeBeginner>
-        <workoutTimeIntermedaite>3600</workoutTimeIntermedaite>
-        <workoutTimePro>5400</workoutTimePro>
-    </preferences>
-</root>

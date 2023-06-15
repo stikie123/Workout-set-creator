@@ -3,45 +3,45 @@
 <workouts>
 	<Workout category="cardio" tags="beginner" focus="legs">
 		<name>20 Minute Jog</name>
-		<explanation></explanation>
+		<explanation>1</explanation>
 		<sets>1x1</sets>
 		<rest>180</rest>
 		<time>300</time>
-		<exampleLink></exampleLink>
+		<exampleLink>1</exampleLink>
 	</Workout>
 	<Workout category="cardio" tags="beginner" focus="legs">
 		<name>20 Minute Walk</name>
-		<explanation></explanation>
+		<explanation>1</explanation>
 		<sets>1x1</sets>
 		<rest>60</rest>
 		<time>300</time>
-		<exampleLink></exampleLink>
+		<exampleLink>1</exampleLink>
 	</Workout>
 
 	<Workout category="cardio" tags="beginner" focus="full body upper body lower body">
 		<name>10 Minute Jumping Jacks</name>
-		<explanation></explanation>
+		<explanation>1</explanation>
 		<sets>1x1</sets>
 		<rest>60</rest>
 		<time>300</time>
-		<exampleLink></exampleLink>
+		<exampleLink>1</exampleLink>
 	</Workout>
 
 	<Workout category="cardio" tags="beginner" focus="legs">
 		<name>15 Minute Bike Ride</name>
-		<explanation></explanation>
+		<explanation>1</explanation>
 		<sets>1x1</sets>
 		<rest>60</rest>
 		<time>300</time>
-		<exampleLink></exampleLink>
+		<exampleLink>1</exampleLink>
 	</Workout>
 
 	<Workout category="cardio" tags="beginner" focus="legs">
 		<name>10 Minute Stair Climbing</name>
-		<explanation></explanation>
+		<explanation>1</explanation>
 		<sets>1x1</sets>
 		<rest>60</rest>
 		<time>300</time>
-		<exampleLink></exampleLink>
+		<exampleLink>1</exampleLink>
 	</Workout>
 </workouts>

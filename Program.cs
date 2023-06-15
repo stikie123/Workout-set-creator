@@ -15,13 +15,6 @@ string tagsAttributeValue = "";
 XmlDocument doc = new XmlDocument();
 string tags, name, sets, explanation, rest, time, link = "";
 
-
-
-// Load preferences from XML document
-XmlDocument preferenceDoc = new XmlDocument();
-preferenceDoc.Load(@"myPreferences.xml");
-XmlNodeList preferenceNodes = preferenceDoc.DocumentElement.SelectNodes("/root/preferences");
-
 // List of nodes to store workout information
 List<XmlNode> nodeList = new List<XmlNode>();
 
@@ -43,7 +36,7 @@ do
             Console.Clear();
             Console.WriteLine(" 1. Quick workout");
             Console.WriteLine(" 2. Add New workout");
-            Console.WriteLine(" 3. List your workouts(under construction)");
+            Console.WriteLine(" 3. List your workouts");
             Console.WriteLine(" 4. Create new category(Under construction)");
             Console.WriteLine(" 5. Delete a workout or category(under construction)");
             Console.WriteLine();
@@ -270,8 +263,6 @@ do
                     readResult = Console.ReadLine();
                     break;
                 case "2":
-
-
 
                     Console.WriteLine("\n\r*Which type of workout would you like to add?");
                     for (int i = 0; i < categoryFilePaths.Length; i++)
@@ -514,13 +505,159 @@ do
 
                 // List Your Workouts (Under Construction)
                 case "3":
-                    Console.WriteLine("This feature is under construction. Please try another option.");
+                    Console.WriteLine("Pick what you want to see");
+                    Console.WriteLine(" 1. List all Workouts");
+                    Console.WriteLine(" 2. List from category");
+                    readResult = Console.ReadLine();
+                    if (readResult == "1")
+                    {
+                        try
+                        {
+                            // check all xml files in the directory
 
+                            foreach (string file in categoryFilePaths)
+                            {
+                                // Load the XML document
+                                doc = new XmlDocument();
+                                doc.Load(file);
+
+                                // Get all the elements in the XML document
+                                XmlNodeList elements = doc.DocumentElement.SelectNodes("/workouts/Workout");
+                                if (elements == null)
+                                {
+                                    Console.WriteLine("empty");
+                                }
+
+                                foreach (XmlNode element in elements)
+                                {
+                                    // Extract workout attributes and elements
+                                    tags = element.Attributes["tags"]?.Value;
+                                    string focus = element.Attributes["focus"]?.Value;
+
+                                    XmlNode nameElement = element.SelectSingleNode("name");
+                                    name = nameElement?.InnerText;
+
+                                    XmlNode explanationElement = element.SelectSingleNode("explanation");
+                                    explanation = explanationElement?.InnerText;
+
+                                    XmlNode setsElement = element.SelectSingleNode("sets");
+                                    sets = setsElement?.InnerText;
+
+                                    XmlNode restElement = element.SelectSingleNode("rest");
+                                    rest = restElement?.InnerText;
+
+                                    XmlNode timeElement = element.SelectSingleNode("time");
+                                    time = timeElement?.InnerText;
+
+                                    XmlNode linkElement = element.SelectSingleNode("exampleLink");
+                                    link = linkElement?.InnerText;
+
+                                    // Process and display the workout information
+                                    Console.WriteLine("Workout:");
+                                    Console.WriteLine("Tags: " + tags);
+                                    Console.WriteLine("Focus: " + focus);
+                                    Console.WriteLine("Name: " + name);
+                                    Console.WriteLine("Explanation: " + explanation);
+                                    Console.WriteLine("Sets: " + sets);
+                                    Console.WriteLine("Rest: " + rest);
+                                    Console.WriteLine("Time: " + time);
+                                    Console.WriteLine("Link: " + link);
+                                    Console.WriteLine();
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error occurred while processing XML files: " + ex.Message);
+                        }
+                    }
+                    else if (readResult == "2")
+                    {
+                        try
+                        {
+                            // check all xml files in the directory
+                            Console.WriteLine("\n\r*Which type of workout would you like to list?");
+                            for (int i = 0; i < categoryFilePaths.Length; i++)
+                            {
+                                fileName = Path.GetFileNameWithoutExtension(categoryFilePaths[i]);
+                                Console.WriteLine(" {0}: {1} workout", i + 1, fileName);
+                            }
+                            readResult = Console.ReadLine();
+                            if (readResult != null)
+                            {
+                                // Get user's choice
+                                userChoice = Convert.ToInt32(readResult);
+                            }
+                            // Check if user's choice is valid
+                            if (userChoice > 0 && userChoice <= categoryFilePaths.Length)
+                            {
+
+                                // Load XML file based on user's choice
+                                doc = new XmlDocument();
+                                fileName = $"{Path.GetFileNameWithoutExtension(categoryFilePaths[userChoice - 1])}.xml";
+                                filePath = Path.Combine(@"categoryFiles", fileName);
+                                doc.Load(filePath);
+                                XmlNodeList elements = doc.DocumentElement.SelectNodes("/workouts/Workout");
+                                if (elements == null)
+                                {
+                                    Console.WriteLine("empty");
+                                }
+
+                                foreach (XmlNode element in elements)
+                                {
+                                    // Extract workout attributes and elements
+                                    tags = element.Attributes["tags"]?.Value;
+                                    string focus = element.Attributes["focus"]?.Value;
+
+                                    XmlNode nameElement = element.SelectSingleNode("name");
+                                    name = nameElement?.InnerText;
+
+                                    XmlNode explanationElement = element.SelectSingleNode("explanation");
+                                    explanation = explanationElement?.InnerText;
+
+                                    XmlNode setsElement = element.SelectSingleNode("sets");
+                                    sets = setsElement?.InnerText;
+
+                                    XmlNode restElement = element.SelectSingleNode("rest");
+                                    rest = restElement?.InnerText;
+
+                                    XmlNode timeElement = element.SelectSingleNode("time");
+                                    time = timeElement?.InnerText;
+
+                                    XmlNode linkElement = element.SelectSingleNode("exampleLink");
+                                    link = linkElement?.InnerText;
+
+                                    // Process and display the workout information
+                                    Console.WriteLine("Workout:");
+                                    Console.WriteLine("Tags: " + tags);
+                                    Console.WriteLine("Focus: " + focus);
+                                    Console.WriteLine("Name: " + name);
+                                    Console.WriteLine("Explanation: " + explanation);
+                                    Console.WriteLine("Sets: " + sets);
+                                    Console.WriteLine("Rest: " + rest);
+                                    Console.WriteLine("Time: " + time);
+                                    Console.WriteLine("Link: " + link);
+                                    Console.WriteLine();
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error occurred while processing XML files: " + ex.Message);
+                        }
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        break;
+                    }
                     break;
 
                 // Create New Category (Under Construction)
                 case "4":
                     Console.WriteLine("This feature is under construction. Please try another option.");
+                    Console.WriteLine("Type the name of the new Category");
+                    Console.ReadLine();
                     break;
 
                 // Delete a Workout or Category (Under Construction)
@@ -615,5 +752,4 @@ do
         default:
             break;
     }
-
 } while (menuSelection != "exit");
