@@ -36,7 +36,7 @@ do
             Console.Clear();
             Console.WriteLine(" 1. Quick workout");
             Console.WriteLine(" 2. Add New workout");
-            Console.WriteLine(" 3. List your workouts");
+            Console.WriteLine(" 3. List/Update your workouts(Update not yet available)");
             Console.WriteLine(" 4. Create new category(Under construction)");
             Console.WriteLine(" 5. Delete a workout or category(under construction)");
             Console.WriteLine();
@@ -262,6 +262,8 @@ do
                     Console.WriteLine("\n\rPress the Enter key to continue");
                     readResult = Console.ReadLine();
                     break;
+
+                //Add new workout
                 case "2":
 
                     Console.WriteLine("\n\r*Which type of workout would you like to add?");
@@ -655,9 +657,25 @@ do
 
                 // Create New Category (Under Construction)
                 case "4":
-                    Console.WriteLine("This feature is under construction. Please try another option.");
                     Console.WriteLine("Type the name of the new Category");
-                    Console.ReadLine();
+                    readResult = Console.ReadLine();
+                    try
+                    {
+                        fileName = $"{readResult}.xml";
+                        string categoryFilePath = @"categoryFiles";
+                        filePath = Path.Combine(categoryFilePath, fileName);
+                        doc = new XmlDocument();
+                        XmlNode rootNode = doc.CreateElement("workouts");
+                        doc.AppendChild(rootNode);
+                        doc.Save(filePath);
+                        Console.WriteLine("Saved Successfully-- Restart application to see changes");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error occurred while processing XML files: " + ex.Message);
+                        throw;
+                    }
+
                     break;
 
                 // Delete a Workout or Category (Under Construction)

@@ -1,0 +1,11 @@
+<workouts>
+  <Workout tags="beginner" focus="arms full body shoulders back chest abs legs">
+    <name>Dive Sprints 25m</name>
+    <explanation>Dive in sprint 25m at 100% then get out pool run around and do it again for X amount of times</explanation>
+    <sets>1x3</sets>
+    <rest>0</rest>
+    <time>120</time>
+    <exampleLink>
+    </exampleLink>
+  </Workout>
+</workouts>
