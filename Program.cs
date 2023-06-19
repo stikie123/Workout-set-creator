@@ -20,6 +20,7 @@ List<XmlNode> nodeList = new List<XmlNode>();
 
 do
 {
+    Console.Clear();
     Console.WriteLine("Welcome to the My workout generator app. Your main menu options are:");
     Console.WriteLine("1. Your workouts");
     Console.WriteLine("2. Professional workouts");
@@ -36,9 +37,9 @@ do
             Console.Clear();
             Console.WriteLine(" 1. Quick workout");
             Console.WriteLine(" 2. Add New workout");
-            Console.WriteLine(" 3. List/Update your workouts(Update not yet available)");
-            Console.WriteLine(" 4. Create new category(Under construction)");
-            Console.WriteLine(" 5. Delete a workout or category(under construction)");
+            Console.WriteLine(" 3. List/Update your workouts");
+            Console.WriteLine(" 4. Create new category");
+            Console.WriteLine(" 5. Delete a workout or category");
             Console.WriteLine();
             Console.WriteLine("Enter your selection number (or type Exit to exit the program)");
 
@@ -505,72 +506,163 @@ do
                     Console.Clear();
                     break;
 
-                // List Your Workouts (Under Construction)
+                // List/update Your Workouts (Under Construction)
                 case "3":
-                    Console.WriteLine("Pick what you want to see");
-                    Console.WriteLine(" 1. List all Workouts");
-                    Console.WriteLine(" 2. List from category");
+                    Console.WriteLine("List or update a workouts");
+                    Console.WriteLine(" 1. List workouts");
+                    Console.WriteLine(" 2. Update workout");
                     readResult = Console.ReadLine();
-                    if (readResult == "1")
+                    if (readResult == null)
                     {
-                        try
+                        break;
+                    }
+                    else if (readResult == "1")
+                    {
+                        Console.WriteLine("Pick what you want to see");
+                        Console.WriteLine(" 1. List all Workouts");
+                        Console.WriteLine(" 2. List from category");
+                        readResult = Console.ReadLine();
+                        if (readResult == "1")
                         {
-                            // check all xml files in the directory
-
-                            foreach (string file in categoryFilePaths)
+                            try
                             {
-                                // Load the XML document
-                                doc = new XmlDocument();
-                                doc.Load(file);
+                                // check all xml files in the directory
 
-                                // Get all the elements in the XML document
-                                XmlNodeList elements = doc.DocumentElement.SelectNodes("/workouts/Workout");
-                                if (elements == null)
+                                foreach (string file in categoryFilePaths)
                                 {
-                                    Console.WriteLine("empty");
-                                }
+                                    // Load the XML document
+                                    doc = new XmlDocument();
+                                    doc.Load(file);
 
-                                foreach (XmlNode element in elements)
-                                {
-                                    // Extract workout attributes and elements
-                                    tags = element.Attributes["tags"]?.Value;
-                                    string focus = element.Attributes["focus"]?.Value;
+                                    // Get all the elements in the XML document
+                                    XmlNodeList elements = doc.DocumentElement.SelectNodes("/workouts/Workout");
+                                    if (elements == null)
+                                    {
+                                        Console.WriteLine("empty");
+                                    }
 
-                                    XmlNode nameElement = element.SelectSingleNode("name");
-                                    name = nameElement?.InnerText;
+                                    foreach (XmlNode element in elements)
+                                    {
+                                        // Extract workout attributes and elements
+                                        tags = element.Attributes["tags"]?.Value;
+                                        string focus = element.Attributes["focus"]?.Value;
 
-                                    XmlNode explanationElement = element.SelectSingleNode("explanation");
-                                    explanation = explanationElement?.InnerText;
+                                        XmlNode nameElement = element.SelectSingleNode("name");
+                                        name = nameElement?.InnerText;
 
-                                    XmlNode setsElement = element.SelectSingleNode("sets");
-                                    sets = setsElement?.InnerText;
+                                        XmlNode explanationElement = element.SelectSingleNode("explanation");
+                                        explanation = explanationElement?.InnerText;
 
-                                    XmlNode restElement = element.SelectSingleNode("rest");
-                                    rest = restElement?.InnerText;
+                                        XmlNode setsElement = element.SelectSingleNode("sets");
+                                        sets = setsElement?.InnerText;
 
-                                    XmlNode timeElement = element.SelectSingleNode("time");
-                                    time = timeElement?.InnerText;
+                                        XmlNode restElement = element.SelectSingleNode("rest");
+                                        rest = restElement?.InnerText;
 
-                                    XmlNode linkElement = element.SelectSingleNode("exampleLink");
-                                    link = linkElement?.InnerText;
+                                        XmlNode timeElement = element.SelectSingleNode("time");
+                                        time = timeElement?.InnerText;
 
-                                    // Process and display the workout information
-                                    Console.WriteLine("Workout:");
-                                    Console.WriteLine("Tags: " + tags);
-                                    Console.WriteLine("Focus: " + focus);
-                                    Console.WriteLine("Name: " + name);
-                                    Console.WriteLine("Explanation: " + explanation);
-                                    Console.WriteLine("Sets: " + sets);
-                                    Console.WriteLine("Rest: " + rest);
-                                    Console.WriteLine("Time: " + time);
-                                    Console.WriteLine("Link: " + link);
-                                    Console.WriteLine();
+                                        XmlNode linkElement = element.SelectSingleNode("exampleLink");
+                                        link = linkElement?.InnerText;
+
+                                        // Process and display the workout information
+                                        Console.WriteLine("Workout:");
+                                        Console.WriteLine("Tags: " + tags);
+                                        Console.WriteLine("Focus: " + focus);
+                                        Console.WriteLine("Name: " + name);
+                                        Console.WriteLine("Explanation: " + explanation);
+                                        Console.WriteLine("Sets: " + sets);
+                                        Console.WriteLine("Rest: " + rest);
+                                        Console.WriteLine("Time: " + time);
+                                        Console.WriteLine("Link: " + link);
+                                        Console.WriteLine();
+                                    }
                                 }
                             }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error occurred while processing XML files: " + ex.Message);
+                            }
                         }
-                        catch (Exception ex)
+                        else if (readResult == "2")
                         {
-                            Console.WriteLine("Error occurred while processing XML files: " + ex.Message);
+                            try
+                            {
+                                // check all xml files in the directory
+                                Console.WriteLine("\n\r*Which type of workout would you like to list?");
+                                for (int i = 0; i < categoryFilePaths.Length; i++)
+                                {
+                                    fileName = Path.GetFileNameWithoutExtension(categoryFilePaths[i]);
+                                    Console.WriteLine(" {0}: {1} workout", i + 1, fileName);
+                                }
+                                readResult = Console.ReadLine();
+                                if (readResult != null)
+                                {
+                                    // Get user's choice
+                                    userChoice = Convert.ToInt32(readResult);
+                                }
+                                // Check if user's choice is valid
+                                if (userChoice > 0 && userChoice <= categoryFilePaths.Length)
+                                {
+
+                                    // Load XML file based on user's choice
+                                    doc = new XmlDocument();
+                                    fileName = $"{Path.GetFileNameWithoutExtension(categoryFilePaths[userChoice - 1])}.xml";
+                                    filePath = Path.Combine(@"categoryFiles", fileName);
+                                    doc.Load(filePath);
+                                    XmlNodeList elements = doc.DocumentElement.SelectNodes("/workouts/Workout");
+                                    if (elements == null)
+                                    {
+                                        Console.WriteLine("empty");
+                                    }
+
+                                    foreach (XmlNode element in elements)
+                                    {
+                                        // Extract workout attributes and elements
+                                        tags = element.Attributes["tags"]?.Value;
+                                        string focus = element.Attributes["focus"]?.Value;
+
+                                        XmlNode nameElement = element.SelectSingleNode("name");
+                                        name = nameElement?.InnerText;
+
+                                        XmlNode explanationElement = element.SelectSingleNode("explanation");
+                                        explanation = explanationElement?.InnerText;
+
+                                        XmlNode setsElement = element.SelectSingleNode("sets");
+                                        sets = setsElement?.InnerText;
+
+                                        XmlNode restElement = element.SelectSingleNode("rest");
+                                        rest = restElement?.InnerText;
+
+                                        XmlNode timeElement = element.SelectSingleNode("time");
+                                        time = timeElement?.InnerText;
+
+                                        XmlNode linkElement = element.SelectSingleNode("exampleLink");
+                                        link = linkElement?.InnerText;
+
+                                        // Process and display the workout information
+                                        Console.WriteLine("Workout:");
+                                        Console.WriteLine("Tags: " + tags);
+                                        Console.WriteLine("Focus: " + focus);
+                                        Console.WriteLine("Name: " + name);
+                                        Console.WriteLine("Explanation: " + explanation);
+                                        Console.WriteLine("Sets: " + sets);
+                                        Console.WriteLine("Rest: " + rest);
+                                        Console.WriteLine("Time: " + time);
+                                        Console.WriteLine("Link: " + link);
+                                        Console.WriteLine();
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error occurred while processing XML files: " + ex.Message);
+                            }
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            break;
                         }
                     }
                     else if (readResult == "2")
@@ -641,6 +733,217 @@ do
                                     Console.WriteLine("Link: " + link);
                                     Console.WriteLine();
                                 }
+                                // Ask the user to pick a workout by name
+                                Console.WriteLine("Which workout would you like to update?");
+                                string workoutName = Console.ReadLine();
+
+                                // Find the workout node by name
+                                XmlNode workoutNode = doc.DocumentElement.SelectSingleNode($"/workouts/Workout[name='{workoutName}']");
+
+                                // Check if the workout node exists
+                                if (workoutNode != null)
+                                {
+                                    // Ask the user to pick an info field to update
+                                    Console.WriteLine("Which info field would you like to update?");
+                                    Console.WriteLine("1: Tags");
+                                    Console.WriteLine("2: Focus");
+                                    Console.WriteLine("3: Name");
+                                    Console.WriteLine("4: Explanation");
+                                    Console.WriteLine("5: Sets");
+                                    Console.WriteLine("6: Rest");
+                                    Console.WriteLine("7: Time");
+                                    Console.WriteLine("8: Link");
+                                    readResult = Console.ReadLine();
+                                    if (readResult != null)
+                                    {
+                                        // Get user's choice
+                                        userChoice = Convert.ToInt32(readResult);
+                                    }
+                                    // Check if user's choice is valid
+                                    if (userChoice > 0 && userChoice <= 8)
+                                    {
+                                        // Get the name of the info field based on user's choice
+                                        string infoField = "";
+                                        switch (userChoice)
+                                        {
+                                            case 1:
+                                                infoField = "tags";
+                                                break;
+                                            case 2:
+                                                infoField = "focus";
+                                                break;
+                                            case 3:
+                                                infoField = "name";
+                                                break;
+                                            case 4:
+                                                infoField = "explanation";
+                                                break;
+                                            case 5:
+                                                infoField = "sets";
+                                                break;
+                                            case 6:
+                                                infoField = "rest";
+                                                break;
+                                            case 7:
+                                                infoField = "time";
+                                                break;
+                                            case 8:
+                                                infoField = "link";
+                                                break;
+                                        }
+                                        // Ask the user to enter the new value for the info field
+                                        Console.WriteLine($"What is the new value for {infoField}?");
+                                        string newValue = "";
+                                        if (infoField == "tags")
+                                        {
+                                            // Ask the user to pick a tag
+                                            Console.WriteLine("1: Beginner");
+                                            Console.WriteLine("2: Intermediate");
+                                            Console.WriteLine("3: Pro");
+                                            readResult = Console.ReadLine();
+                                            if (readResult != null)
+                                            {
+                                                // Get user's choice
+                                                userChoice = Convert.ToInt32(readResult);
+                                            }
+                                            // Check if user's choice is valid
+                                            if (userChoice > 0 && userChoice <= 3)
+                                            {
+                                                // Get the name of the tag based on user's choice
+                                                string tag = "";
+                                                switch (userChoice)
+                                                {
+                                                    case 1:
+                                                        tag = "Beginner";
+                                                        break;
+                                                    case 2:
+                                                        tag = "Intermediate";
+                                                        break;
+                                                    case 3:
+                                                        tag = "Pro";
+                                                        break;
+                                                }
+                                                // Set infoField to the chosen tag
+                                                newValue = tag;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid choice.");
+                                            }
+                                        }
+                                        else if (infoField == "focus")
+                                        {
+                                            // Ask the user to pick one or more focuses
+                                            Console.WriteLine("Which focus(es) would you like to choose?");
+                                            Console.WriteLine("1: Full body");
+                                            Console.WriteLine("2: Upper body");
+                                            Console.WriteLine("3: Lower body");
+                                            Console.WriteLine("4: Arms");
+                                            Console.WriteLine("5: Legs");
+                                            Console.WriteLine("6: Shoulders");
+                                            Console.WriteLine("7: Back");
+                                            Console.WriteLine("8: Abs");
+                                            Console.WriteLine("9: Chest");
+                                            Console.WriteLine("Enter your choices separated by commas (e.g. 1,3,5)");
+                                            readResult = Console.ReadLine();
+                                            int[] userChoices = { };
+                                            if (readResult != null)
+                                            {
+                                                // Get user's choices as an array of integers
+                                                userChoices = Array.ConvertAll(readResult.Split(','), int.Parse);
+                                            }
+                                            // Check if user's choices are valid
+                                            if (userChoices.All(x => x > 0 && x <= 9))
+                                            {
+                                                // Get the names of the focuses based on user's choices
+                                                List<string> focuses = new List<string>();
+                                                foreach (int choice in userChoices)
+                                                {
+                                                    switch (choice)
+                                                    {
+                                                        case 1:
+                                                            focuses.Add("Full body");
+                                                            break;
+                                                        case 2:
+                                                            focuses.Add("Upper body");
+                                                            break;
+                                                        case 3:
+                                                            focuses.Add("Lower body");
+                                                            break;
+                                                        case 4:
+                                                            focuses.Add("Arms");
+                                                            break;
+                                                        case 5:
+                                                            focuses.Add("Legs");
+                                                            break;
+                                                        case 6:
+                                                            focuses.Add("Shoulders");
+                                                            break;
+                                                        case 7:
+                                                            focuses.Add("Back");
+                                                            break;
+                                                        case 8:
+                                                            focuses.Add("Abs");
+                                                            break;
+                                                        case 9:
+                                                            focuses.Add("Chest");
+                                                            break;
+                                                    }
+                                                }
+                                                // Set newValue to the chosen focuses
+                                                // If Upper body is chosen, set newValue to every option
+                                                if (focuses.Contains("Full body"))
+                                                {
+                                                    newValue = "Full body, Upper body, Lower body, Arms, Legs, Shoulders, Back, Abs, Chest";
+                                                }
+                                                else if (focuses.Contains("Upper body"))
+                                                {
+                                                    newValue = "Upper body, Arms, Shoulders, Back, Abs, Chest";
+                                                }
+                                                // If Lower body is chosen, set newValue to Legs and Lower body
+                                                else if (focuses.Contains("Lower body"))
+                                                {
+                                                    newValue = "Legs, Lower body";
+                                                }
+                                                // Otherwise, set newValue to the chosen focuses separated by commas
+                                                else
+                                                {
+                                                    newValue = string.Join(", ", focuses);
+                                                }
+                                                // Console log the chosen focuses and newValue
+                                                Console.WriteLine($"You have chosen {string.Join(", ", focuses)} as your focus(es).");
+                                                Console.WriteLine($"newValue is now {newValue}.");
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid choice(s).");
+                                            }
+                                        }
+                                        else { newValue = Console.ReadLine(); }
+                                        // Check if the info field is an attribute or an element
+                                        if (infoField == "tags" || infoField == "focus")
+                                        {
+                                            // Update the attribute value
+                                            workoutNode.Attributes[infoField].Value = newValue;
+                                        }
+                                        else
+                                        {
+                                            // Update the element value
+                                            workoutNode.SelectSingleNode(infoField).InnerText = newValue;
+                                        }
+                                        // Save the changes to the XML file
+                                        doc.Save(filePath);
+                                        Console.WriteLine($"The {infoField} of {workoutName} has been updated to {newValue}.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Invalid choice.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No such workout found.");
+                                }
                             }
                         }
                         catch (Exception ex)
@@ -648,10 +951,7 @@ do
                             Console.WriteLine("Error occurred while processing XML files: " + ex.Message);
                         }
                         Console.ReadLine();
-                    }
-                    else
-                    {
-                        break;
+
                     }
                     break;
 
@@ -680,7 +980,123 @@ do
 
                 // Delete a Workout or Category (Under Construction)
                 case "5":
-                    Console.WriteLine("This feature is under construction. Please try another option.");
+                    Console.WriteLine("What do you want to delete.");
+                    Console.WriteLine(" 1. Delete Workout.");
+                    Console.WriteLine(" 2. Delete Category.");
+                    readResult = Console.ReadLine();
+                    if (readResult == "1")
+                    {
+                        XmlNodeList? elements = null;
+                        try
+                        {
+                            // check all xml files in the directory
+                            Console.WriteLine("\n\r*Which type of workout would you like to delete?");
+                            for (int i = 0; i < categoryFilePaths.Length; i++)
+                            {
+                                fileName = Path.GetFileNameWithoutExtension(categoryFilePaths[i]);
+                                Console.WriteLine(" {0}: {1} workout", i + 1, fileName);
+                            }
+                            readResult = Console.ReadLine();
+                            if (readResult != null)
+                            {
+                                // Get user's choice
+                                userChoice = Convert.ToInt32(readResult);
+                            }
+                            // Check if user's choice is valid
+                            if (userChoice > 0 && userChoice <= categoryFilePaths.Length)
+                            {
+
+                                // Load XML file based on user's choice
+                                doc = new XmlDocument();
+                                fileName = $"{Path.GetFileNameWithoutExtension(categoryFilePaths[userChoice - 1])}.xml";
+                                filePath = Path.Combine(@"categoryFiles", fileName);
+                                doc.Load(filePath);
+                                elements = doc.DocumentElement.SelectNodes("/workouts/Workout");
+                                if (elements == null)
+                                {
+                                    Console.WriteLine("empty");
+                                }
+                                Console.WriteLine("\n\r*Which workouts would you like to delete? (Enter numbers separated by commas)");
+                                for (int i = 0; i < elements.Count; i++)
+                                {
+                                    Console.WriteLine(" {0}: {1}", i + 1, elements[i].InnerText);
+                                }
+                            }
+
+                            // Get user's choices
+                            readResult = Console.ReadLine();
+                            if (readResult != null)
+                            {
+                                // Split user's choices into an array of integers
+                                int[] userChoices = readResult.Split(',').Select(int.Parse).ToArray();
+
+                                // Delete selected elements
+                                foreach (int choice in userChoices)
+                                {
+                                    if (choice > 0 && choice <= elements.Count)
+                                    {
+                                        XmlNode nodeToDelete = elements[choice - 1];
+                                        nodeToDelete.ParentNode.RemoveChild(nodeToDelete);
+                                    }
+                                }
+                                Console.WriteLine("Press enter to save or press any key to cancel");
+                                readResult = Console.ReadLine();
+                                if (readResult == null)
+                                {
+                                    // Save changes to XML file
+                                    doc.Save(filePath);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Canceled");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error occurred while processing XML files: " + ex.Message);
+                        }
+                        Console.ReadLine();
+                    }
+                    else if (readResult == "2")
+                    {
+                        try
+                        {
+                            // check all xml files in the directory
+                            Console.WriteLine("\n\r*Which category would you like to delete?");
+                            for (int i = 0; i < categoryFilePaths.Length; i++)
+                            {
+                                fileName = Path.GetFileNameWithoutExtension(categoryFilePaths[i]);
+                                Console.WriteLine(" {0}: {1} workout", i + 1, fileName);
+                            }
+                            readResult = Console.ReadLine();
+                            if (readResult != null)
+                            {
+                                // Get user's choice
+                                userChoice = Convert.ToInt32(readResult);
+                            }
+                            // Check if user's choice is valid
+                            if (userChoice > 0 && userChoice <= categoryFilePaths.Length)
+                            {
+                                filePath = categoryFilePaths[userChoice - 1];
+                                // Delete the file if it exists
+                                if (File.Exists(filePath))
+                                {
+                                    File.Delete(filePath);
+                                    Console.WriteLine("The file {0} has been deleted.", filePath);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("The file {0} does not exist.", filePath);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error occurred while processing XML files: " + ex.Message);
+                        }
+                    }
+                    else { break; }
                     break;
 
                 default:

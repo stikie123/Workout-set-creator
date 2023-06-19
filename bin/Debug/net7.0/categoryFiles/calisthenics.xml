@@ -65,7 +65,7 @@
     <time>300</time>
     <exampleLink>1</exampleLink>
   </Workout>
-  <Workout tags="beginner" focus="legs">
+  <Workout tags="Beginner" focus="Legs">
     <name>Lunges</name>
     <explanation>1</explanation>
     <sets>3x8-12</sets>
