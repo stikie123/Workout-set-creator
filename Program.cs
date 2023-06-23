@@ -199,7 +199,7 @@ do
                         // Add nodes that match req to nodeList
                         foreach (XmlNode node in Nodes)
                         {
-                            if (focusAttributeValue.Any(focus => node.Attributes["focus"].Value.Contains(focus)) && tagsAttributeValue == node.Attributes["tags"].InnerText)
+                            if (focusAttributeValue.Any(focus => node.Attributes["focus"].Value.Contains(focus)))
                             {
                                 nodeList.Add(node);
                             }
@@ -242,6 +242,9 @@ do
                             i++;
                         }
                         Console.Clear();
+                        // prints total time of exercise
+                        Console.WriteLine(totalTime / 60 + "min in Total");
+
                         // Print out randomized list of workouts
                         foreach (XmlNode node in nodeList)
                         {
@@ -251,6 +254,9 @@ do
                             Console.WriteLine("  Sets: {0}", node["sets"].InnerText);
                             Console.WriteLine("  Rest: {0}", node["rest"].InnerText);
                             Console.WriteLine("  Example link: {0}", node["exampleLink"].InnerText);
+                            totalTime -= int.Parse(node["time"].InnerText); ;
+                            Console.WriteLine(totalTime + "min remaining");
+                            Console.ReadLine();
                         }
                         // prints total time of exercise
                         Console.WriteLine(totalTime / 60 + "min in Total");

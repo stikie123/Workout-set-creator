@@ -1,76 +1,74 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <workouts>
-  <Workout tags="beginner" focus="shoulders">
-    <name>Wall Stand</name>
-    <explanation>1</explanation>
+  <Workout tags="beginner" focus="arms upper body shoulders back chest abs">
+    <name>Wall stand</name>
+    <explanation>Stand on your hands against a wall</explanation>
     <sets>3xMax</sets>
     <rest>60</rest>
     <time>300</time>
-    <exampleLink>1</exampleLink>
+    <exampleLink>none</exampleLink>
   </Workout>
-  <Workout tags="beginner" focus="back, abs">
-    <name>Plank</name>
-    <explanation>
-    </explanation>
-    <sets>3xMax</sets>
-    <rest>60</rest>
-    <time>300</time>
-    <exampleLink>1</exampleLink>
+  <Workout tags="beginner" focus="back">
+    <name>Toe touches</name>
+    <explanation>go down and touch your toes and come back up (if to easy hold light weights in hands)</explanation>
+    <sets>3x10</sets>
+    <rest>10</rest>
+    <time>90</time>
+    <exampleLink>none</exampleLink>
   </Workout>
-  <Workout tags="beginner" focus="arms, shoulders">
+  <Workout tags="beginner" focus="arms full body shoulders back chest abs legs">
+    <name>Extended arm plank</name>
+    <explanation>a plank but your arms are extended in front of you</explanation>
+    <sets>3x40sec</sets>
+    <rest>30</rest>
+    <time>210</time>
+    <exampleLink>none</exampleLink>
+  </Workout>
+  <Workout tags="beginner" focus="arms upper body shoulders back chest abs">
     <name>Normal push-up</name>
-    <explanation>1</explanation>
-    <sets>3x8-12</sets>
+    <explanation>a normal push-up</explanation>
+    <sets>3x10</sets>
+    <rest>30</rest>
+    <time>350</time>
+    <exampleLink>none</exampleLink>
+  </Workout>
+  <Workout tags="beginner" focus="arms upper body shoulders back chest abs">
+    <name>Wide arm Push-up</name>
+    <explanation>a wid arm push-up</explanation>
+    <sets>3x10</sets>
+    <rest>30</rest>
+    <time>350</time>
+    <exampleLink>none</exampleLink>
+  </Workout>
+  <Workout tags="beginner" focus="arms upper body shoulders back chest abs">
+    <name>Close grip push-up</name>
+    <explanation>Closer grip push ups</explanation>
+    <sets>3x10</sets>
+    <rest>30</rest>
+    <time>350</time>
+    <exampleLink>none</exampleLink>
+  </Workout>
+  <Workout tags="beginner" focus="abs">
+    <name>Plank</name>
+    <explanation>plank</explanation>
+    <sets>3xmax</sets>
     <rest>30</rest>
     <time>300</time>
-    <exampleLink>1</exampleLink>
+    <exampleLink>none</exampleLink>
+  </Workout>
+  <Workout tags="beginner" focus="arms upper body shoulders back chest abs">
+    <name>Chair dips</name>
+    <explanation>chair behind you and put hand on chair and lower and raise yourself</explanation>
+    <sets>3x10</sets>
+    <rest>30</rest>
+    <time>300</time>
+    <exampleLink>none</exampleLink>
   </Workout>
   <Workout tags="beginner" focus="shoulders">
     <name>Pike hold</name>
-    <explanation>1</explanation>
+    <explanation>go from push up posistion and lift your but as high as posible and hold</explanation>
     <sets>3xMax</sets>
     <rest>30</rest>
     <time>300</time>
-    <exampleLink>1</exampleLink>
-  </Workout>
-  <Workout tags="beginner" focus="legs">
-    <name>Squats</name>
-    <explanation>1</explanation>
-    <sets>3x8-12</sets>
-    <rest>60</rest>
-    <time>300</time>
-    <exampleLink>1</exampleLink>
-  </Workout>
-  <Workout tags="beginner" focus="arms">
-    <name>Dips</name>
-    <explanation>1</explanation>
-    <sets>3x8-12</sets>
-    <rest>60</rest>
-    <time>300</time>
-    <exampleLink>1</exampleLink>
-  </Workout>
-  <Workout tags="pro" focus="back">
-    <name>Superman Hold</name>
-    <explanation>1</explanation>
-    <sets>3xMax</sets>
-    <rest>60</rest>
-    <time>300</time>
-    <exampleLink>1</exampleLink>
-  </Workout>
-  <Workout tags="beginner" focus="abs">
-    <name>Crunches</name>
-    <explanation>1</explanation>
-    <sets>3x18-22</sets>
-    <rest>60</rest>
-    <time>300</time>
-    <exampleLink>1</exampleLink>
-  </Workout>
-  <Workout tags="Beginner" focus="Legs">
-    <name>Lunges</name>
-    <explanation>1</explanation>
-    <sets>3x8-12</sets>
-    <rest>60</rest>
-    <time>300</time>
-    <exampleLink>1</exampleLink>
+    <exampleLink>none</exampleLink>
   </Workout>
 </workouts>
