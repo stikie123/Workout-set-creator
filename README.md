@@ -1,7 +1,3 @@
-<blockquote>
-    <p style="color:red;"><strong>⚠️ This project is no longer functional. ⚠️</strong></p>
-</blockquote>
-
 # Workout-set-creator
 
 This console project was created to torture myself i mean challenge myself to use old scool XML without LINQ and generate custom workout sets based on the user's inputs. The project is written in C# and is perfect for anyone who wants to spice up their workout routine.
